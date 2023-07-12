@@ -18,31 +18,9 @@ class ViewController: UIViewController {
     var player: AVAudioPlayer?
 
     @IBAction func keyPressed(_ sender: UIButton) {
-        playSound(soundName:"C")
+        playSound(soundName:sender.currentTitle ?? "C")
     }
     
-    @IBAction func dPressed(_ sender: UIButton) {
-        playSound(soundName:"D")
-    }
-    @IBAction func ePressed(_ sender: UIButton) {
-        playSound(soundName:"E")
-    }
-    
-    @IBAction func fPressed(_ sender: UIButton) {
-        playSound(soundName:"F")
-    }
-    
-    @IBAction func gPressed(_ sender: UIButton) {
-        playSound(soundName:"G")
-    }
-    
-    @IBAction func aPressed(_ sender: UIButton) {
-        playSound(soundName:"A")
-    }
-    
-    @IBAction func bPressed(_ sender: UIButton) {
-        playSound(soundName:"B")
-    }
     
     func playSound(soundName: String) {
         guard let url = Bundle.main.url(forResource: soundName, withExtension: "wav") else { return }
