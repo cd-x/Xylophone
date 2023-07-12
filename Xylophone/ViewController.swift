@@ -7,15 +7,57 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-
     
+    var player: AVAudioPlayer?
 
+    @IBAction func keyPressed(_ sender: UIButton) {
+        playSound(soundName:"C")
+    }
+    
+    @IBAction func dPressed(_ sender: UIButton) {
+        playSound(soundName:"D")
+    }
+    @IBAction func ePressed(_ sender: UIButton) {
+        playSound(soundName:"E")
+    }
+    
+    @IBAction func fPressed(_ sender: UIButton) {
+        playSound(soundName:"F")
+    }
+    
+    @IBAction func gPressed(_ sender: UIButton) {
+        playSound(soundName:"G")
+    }
+    
+    @IBAction func aPressed(_ sender: UIButton) {
+        playSound(soundName:"A")
+    }
+    
+    @IBAction func bPressed(_ sender: UIButton) {
+        playSound(soundName:"B")
+    }
+    
+    func playSound(soundName: String) {
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "wav") else { return }
+
+        do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+                guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }
 
