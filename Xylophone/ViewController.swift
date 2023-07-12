@@ -18,7 +18,9 @@ class ViewController: UIViewController {
     var player: AVAudioPlayer?
 
     @IBAction func keyPressed(_ sender: UIButton) {
+        sender.layer.opacity = 0.5
         playSound(soundName:sender.currentTitle ?? "C")
+        sender.layer.opacity = 1
     }
     
     
